@@ -56,13 +56,9 @@ jobs:
         working-directory: ${{github.workspace}}/build/vcpkg
         if: steps.vcpkg_cache.outputs.cache-hit != 'true'
         run: |
-          .\vcpkg install boost-program-options:x64-windows-static
-          .\vcpkg install curl:x64-windows-static
+          .\vcpkg install boost-program-options:x64-windows
+          .\vcpkg install curl:x64-windows
           
-      - name: Check Libs
-        working-directory: ${{github.workspace}}/build/vcpkg/installed/x64-windows/include
-        run: dir
-
       - name: Configure CMake
         # Use a bash shell so we can use the same syntax for environment variable
         # access regardless of the host operating system
@@ -77,7 +73,7 @@ jobs:
         working-directory: ${{github.workspace}}/build
         shell: powershell
         # Execute the build.  You can specify a specific target with "--target <NAME>"
-        run: cmake --build ../vimeo_download --config $BUILD_TYPE
+        run: cmake --build ../vimeo_download
 
       - name: Test
         working-directory: ${{github.workspace}}/build

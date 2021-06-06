@@ -21,9 +21,9 @@ void callCurl(CURL *curl, const std::string &url)
     curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &status_code);
     if (status_code != 200)
     {
-        std::cout << "ERROR: HTTP Status Code is " << status_code << std::endl;
+        std::cout << "\n" << "ERROR: HTTP Status Code is " << status_code << std::endl;
         curl = nullptr;
-        std::exit(1);
+        throw "Exception: Request Invalid URL" + url;
     }
     curl_easy_cleanup(curl);
     curl = nullptr;
