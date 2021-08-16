@@ -23,7 +23,7 @@ void callCurl(CURL *curl, const std::string &url)
     {
         std::cout << "\n" << "ERROR: HTTP Status Code is " << status_code << std::endl;
         curl = nullptr;
-        throw "Exception: Request Invalid URL" + url;
+        throw "Exception: Request Invalid URL \n" + url;
     }
     curl_easy_cleanup(curl);
     curl = nullptr;

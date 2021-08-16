@@ -155,7 +155,8 @@ void Vimeo::downloadVideo()
 
 void Vimeo::downloadAudio()
 {
-    auto audio = json->v.get<picojson::object>()["audio"].get<picojson::array>()[0].get<picojson::object>();
+    constexpr int FIRST_ELEMENT = 0;
+    auto audio = json->v.get<picojson::object>()["audio"].get<picojson::array>()[FIRST_ELEMENT].get<picojson::object>();
     std::string audio_base_url = this->base_url + audio.at("base_url").to_str();
     if (this->isVerbose)
     {
