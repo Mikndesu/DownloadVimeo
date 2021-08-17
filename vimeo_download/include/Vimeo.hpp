@@ -27,7 +27,6 @@ private:
     void downloadAudio();
     void downloadSegmentAndMerge(picojson::object& obj, std::string base_url, std::string mode);
     void decodeInitSegmentAndMerge(const picojson::object& obj, std::string tmpFileDir);
-    std::tuple<std::string, std::string> createDirectory();
     picojson::object getHighestQualityVideoPartOfJson();
     std::unique_ptr<JSON> json;
     std::string url;

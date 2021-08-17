@@ -11,10 +11,10 @@
 #include "../include/cppcodec/base64_rfc4648.hpp"
 #include "../include/Utils.hpp"
 #include "../include/Colors.hpp"
+#include "../include/CreateDir.hpp"
 #include <regex>
 #include <tuple>
 #include <filesystem>
-#include <chrono>
 #include <future>
 #include <cstdlib>
 #include <vector>
@@ -36,9 +36,9 @@ Vimeo::Vimeo(const std::string &output_name, const std::string &url, std::unique
     {
         std::cout << base_url << std::endl;
     }
-    auto paths = createDirectory();
-    this->tmp_dir = std::get<0>(paths);
-    this->save_dir = std::get<1>(paths);
+    auto paths = Utils::createDirectory(this->home_dir);
+    this->tmp_dir = paths.first;
+    this->save_dir = paths.second;
     if (this->output_name.find(".mp4") == std::string::npos)
     {
         if (this->isVerbose)
@@ -69,9 +69,7 @@ void Vimeo::merge()
     auto command_ = command(this->tmp_dir, this->output_name);
     if (!this->isVerbose)
     {
-#if defined(__MACH__) || defined(__linux) || defined(_WIN64)
         command_ += " -loglevel quiet";
-#endif
     }
     else
     {
@@ -114,25 +112,6 @@ Vimeo &Vimeo::download()
               << "Downloading Video&Audio has successflly done"
               << Utils::Colors::RESET << std::endl;
     return *this;
-}
-
-std::tuple<std::string, std::string> Vimeo::createDirectory()
-{
-    auto now_c = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
-    std::stringstream ss;
-    ss << now_c;
-#if defined(__MACH__) || defined(__linux)
-    std::string tmp = std::filesystem::temp_directory_path().string() + "/dlvimeo/" + ss.str() + "/";
-    std::string saved = this->home_dir + "/Desktop/Vimeo";
-#endif
-#ifdef _WIN64
-    std::string tmp = std::filesystem::temp_directory_path().string() + "\\dlvimeo\\" + ss.str() + "\\";
-    std::string saved = this->home_dir + "\\Desktop\\Vimeo";
-#endif
-    std::filesystem::create_directories(tmp);
-    std::filesystem::create_directories(saved);
-    std::tuple<std::string, std::string> paths = {tmp, saved};
-    return paths;
 }
 
 void Vimeo::downloadVideo()
