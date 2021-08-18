@@ -36,16 +36,17 @@ jobs:
         shell: bash
         # Execute the build.  You can specify a specific target with "--target <NAME>"
         run: cmake --build ../vimeo_download
+
       - name: zipping
-        working-directory: ${{github.workspace}}/build
+        working-directory: ${{github.workspace}}
         shell: bash
-        run: zip ${{github.workspace}}/vimeo_download/download_vimeo_ubuntu.zip ${{github.workspace}}/vimeo_download/download_vimeo
+        run: zip download_vimeo_ubuntu.zip vimeo_download/download_vimeo
 
       - name: save dist
         uses: actions/upload-artifact@v2
         with:
           name: download_vimeo_ubuntu.zip
-          path: ${{github.workspace}}/vimeo_download/download_vimeo_ubuntu.zip
+          path: ${{github.workspace}}/download_vimeo_ubuntu.zip
 
   build-windows:
     name: Create Release Binary Windows
@@ -105,15 +106,15 @@ jobs:
         run: cmake --build ../vimeo_download
 
       - name: zipping
-        working-directory: ${{github.workspace}}/build
+        working-directory: ${{github.workspace}}
         shell: powershell
-        run: powershell -Command "Compress-Archive ${{github.workspace}}\vimeo_download\Debug\download_vimeo.exe ${{github.workspace}}\vimeo_download\download_vimeo_windows.zip"
+        run: powershell -Command "Compress-Archive -Path vimeo_download\Debug\download_vimeo.exe -DestinationPath download_vimeo_windows.zip"
 
       - name: save dist
         uses: actions/upload-artifact@v2
         with:
           name: download_vimeo_windows.zip
-          path: ${{github.workspace}}\vimeo_download\download_vimeo_windows.zip
+          path: ${{github.workspace}}\download_vimeo_windows.zip
 
   build-macos:
     name: Create Release Binary macOS
@@ -138,15 +139,15 @@ jobs:
         run: cmake --build ../vimeo_download
 
       - name: zipping
-        working-directory: ${{github.workspace}}/build
+        working-directory: ${{github.workspace}}
         shell: bash
-        run: zip ${{github.workspace}}/vimeo_download/download_vimeo_mac.zip ${{github.workspace}}/vimeo_download/download_vimeo
+        run: zip download_vimeo_mac.zip vimeo_download/download_vimeo
 
       - name: save dist
         uses: actions/upload-artifact@v2
         with:
           name: download_vimeo_mac.zip
-          path: ${{github.workspace}}/vimeo_download/download_vimeo_mac.zip
+          path: ${{github.workspace}}/download_vimeo_mac.zip
 
   publish-relase:
     name: Create All Release
