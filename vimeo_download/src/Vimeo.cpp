@@ -7,11 +7,11 @@
 //
 
 #include "Vimeo.hpp"
-#include "Requests.hpp"
-#include "../include/cppcodec/base64_rfc4648.hpp"
-#include "../include/Utils.hpp"
-#include "../include/Colors.hpp"
-#include "../include/CreateDir.hpp"
+#include "network/Requsts.hpp"
+#include "../lib/cppcodec/base64_rfc4648.hpp"
+#include "util/Utils.hpp"
+#include "util/Colors.hpp"
+#include "util/CreateDir.hpp"
 #include <regex>
 #include <tuple>
 #include <filesystem>

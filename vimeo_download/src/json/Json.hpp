@@ -10,7 +10,7 @@
 #define JSON_hpp
 
 #include <iostream>
-#include "picojson.h"
+#include "../../lib/picojson.h"
 
 class JSON {
 public:

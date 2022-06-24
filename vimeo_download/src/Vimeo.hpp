@@ -12,7 +12,7 @@
 #include <iostream>
 #include <memory>
 #include <string>
-#include "JSON.hpp"
+#include "json/Json.hpp"
 
 class Vimeo
 {

@@ -12,7 +12,7 @@
 #include <iostream>
 #include <string>
 #include <memory>
-#include "JSON.hpp"
+#include "../json/Json.hpp"
 
 namespace Requests {
     std::unique_ptr<JSON> get(const std::string&);

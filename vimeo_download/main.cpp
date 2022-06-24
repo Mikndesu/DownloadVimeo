@@ -12,9 +12,9 @@
 #include <cstdlib>
 #include <boost/program_options.hpp>
 #include <tuple>
-#include "include/Vimeo.hpp"
-#include "include/model/parsedArg.hpp"
-#include "include/Requests.hpp"
+#include "src/Vimeo.hpp"
+#include "src/model/parsedArg.hpp"
+#include "src/network/Requsts.hpp"
 
 namespace
 {

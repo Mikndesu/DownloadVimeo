@@ -6,7 +6,7 @@
 //  Copyright © 2020 MitsukiGoto. All rights reserved.
 //
 
-#include "JSON.hpp"
+#include "Json.hpp"
 
 JSON::JSON(std::string json) {
     std::string err = picojson::parse(this->v, json);
