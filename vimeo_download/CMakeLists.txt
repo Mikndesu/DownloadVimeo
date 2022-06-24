@@ -13,11 +13,8 @@ add_definitions(-Wall -Wextra -O2)
 endif()
 
 add_subdirectory(src)
-add_subdirectory(src/json)
-add_subdirectory(src/network)
-add_subdirectory(src/util)
 
-target_link_libraries(download_vimeo vimeocore_vimeo vimeocore_json vimeocore_network vimeocore_util)
+target_link_libraries(download_vimeo vimeocore_vimeo)
 set(Boost_USE_STATIC_LIBS ON)
 set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)

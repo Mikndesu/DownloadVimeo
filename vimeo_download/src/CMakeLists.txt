@@ -1,2 +1,6 @@
 add_library(vimeocore_vimeo STATIC Vimeo.cpp)
+add_subdirectory(util)
+add_subdirectory(network)
+add_subdirectory(json)
 target_include_directories(vimeocore_vimeo PUBLIC ${PROJECT_SOURCE_DIR})
+target_link_libraries(vimeocore_vimeo vimeocore_network vimeocore_util vimeocore_json)
