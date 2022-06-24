@@ -1,2 +1,2 @@
-add_library(vimeocore STATIC Vimeo.cpp JSON.cpp Requests.cpp CreateDir.cpp)
-target_include_directories(vimeocore PUBLIC ${PROJECT_SOURCE_DIR}/include)
+add_library(vimeocore_vimeo STATIC Vimeo.cpp)
+target_include_directories(vimeocore_vimeo PUBLIC ${PROJECT_SOURCE_DIR})
