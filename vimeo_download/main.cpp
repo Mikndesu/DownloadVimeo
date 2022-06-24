@@ -14,7 +14,7 @@
 #include <tuple>
 #include "src/Vimeo.hpp"
 #include "src/model/parsedArg.hpp"
-#include "src/network/Requsts.hpp"
+#include "src/network/Requests.hpp"
 
 namespace
 {

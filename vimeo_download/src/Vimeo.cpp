@@ -7,7 +7,7 @@
 //
 
 #include "Vimeo.hpp"
-#include "network/Requsts.hpp"
+#include "network/Requests.hpp"
 #include "../lib/cppcodec/base64_rfc4648.hpp"
 #include "util/Utils.hpp"
 #include "util/Colors.hpp"
