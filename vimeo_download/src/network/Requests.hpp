@@ -47,11 +47,6 @@ protected:
         this->status_code = 0;
         curl = curl_easy_init();
         curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
-        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, +([](char *ptr, std::size_t size, std::size_t nmemb, std::string *stream) {
-                         int dataLength = static_cast<int>(size * nmemb);
-                         stream->append(ptr, dataLength);
-                         return dataLength;
-                     }));
     }
 };
 
