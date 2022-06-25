@@ -13,7 +13,7 @@
 #include <boost/program_options.hpp>
 #include <tuple>
 #include "src/Vimeo.hpp"
-#include "src/model/parsedArg.hpp"
+#include "src/model/ParsedArg.hpp"
 #include "src/network/RequestMetadata.hpp"
 
 namespace
