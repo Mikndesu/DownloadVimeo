@@ -15,11 +15,6 @@
 #include <curl/curl.h>
 #include "../json/Json.hpp"
 
-namespace Requests
-{
-    std::unique_ptr<JSON> get(const std::string &);
-}
-
 class CurlStuff {
 protected:
     CURL *curl;
