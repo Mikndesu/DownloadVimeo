@@ -1,5 +1,5 @@
 #pragma once
-#include "Requests.hpp"
+#include "CurlStuff.hpp"
 
 class SegmentVideo : public CurlStuff {
     public:

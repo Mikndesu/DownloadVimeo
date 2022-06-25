@@ -1,6 +1,6 @@
 #pragma once
 #include <memory>
-#include "Requests.hpp"
+#include "CurlStuff.hpp"
 #include "../json/Json.hpp"
 
 class RequestMetadata : public CurlStuff {
