@@ -22,7 +22,7 @@
 #include <sstream>
 #include <iterator>
 
-Vimeo::Vimeo(const std::string &output_name, const std::string &url, std::unique_ptr<JSON> json, bool isVerbose, int progress_limit) : url(url), output_name(output_name), isVerbose(isVerbose), progress_limit(progress_limit)
+Vimeo::Vimeo(const std::string &output_name, const std::string &url, std::unique_ptr<Json> json, bool isVerbose, int progress_limit) : url(url), output_name(output_name), isVerbose(isVerbose), progress_limit(progress_limit)
 {
     this->json = std::move(json);
     this->base_url = Utils::getBaseUrl(url, this->json->v.get<picojson::object>()["base_url"].to_str());

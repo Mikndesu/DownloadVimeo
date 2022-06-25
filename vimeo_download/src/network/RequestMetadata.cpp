@@ -9,9 +9,9 @@ RequestMetadata::RequestMetadata(const std::string& url) : super(url) {
                      });
 }
 
-std::unique_ptr<JSON> RequestMetadata::get() {
+std::unique_ptr<Json> RequestMetadata::get() {
     std::string response;
     curl_easy_setopt(super::curl, CURLOPT_WRITEDATA, &response);
     super::perform();
-    return std::make_unique<JSON>(response);
+    return std::make_unique<Json>(response);
 }

@@ -7,5 +7,5 @@ class RequestMetadata : public CurlStuff {
     public:
     typedef CurlStuff super;
     RequestMetadata(const std::string& url);
-    std::unique_ptr<JSON> get();
+    std::unique_ptr<Json> get();
 };
