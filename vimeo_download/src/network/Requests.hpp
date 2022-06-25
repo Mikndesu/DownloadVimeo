@@ -35,12 +35,11 @@ protected:
 
     void perform() {
         std::string response;
-        long status_code = 0;
         curl_easy_setopt(this->curl, CURLOPT_URL, this->url.c_str());
         curl_easy_perform(this->curl);
         curl_easy_getinfo(this->curl, CURLINFO_RESPONSE_CODE, &this->status_code);
-        if (status_code != 200) {
-            std::cout << "\n" << "ERROR: HTTP Status Code is " << status_code << std::endl;
+        if (this->status_code != 200) {
+            std::cout << "\n" << "ERROR: HTTP Status Code is " << this->status_code << std::endl;
             curl = nullptr;
             throw "Exception: Request Invalid URL \n" + url;
         }
