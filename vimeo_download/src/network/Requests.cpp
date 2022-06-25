@@ -45,18 +45,3 @@ std::unique_ptr<JSON> Requests::get(const std::string &url)
     auto json = std::make_unique<JSON>(response);
     return json;
 }
-
-void Requests::get(std::string &url, const std::string &path)
-{
-    std::ofstream output(path, std::ios::binary | std::ios::app);
-    CURL *curl;
-    curl = curl_easy_init();
-    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, +([](char *ptr, std::size_t size, std::size_t nmemb, void *user_data) {
-                         std::ofstream *out = static_cast<std::ofstream *>(user_data);
-                         size_t nbytes = size * nmemb;
-                         out->write(ptr, nbytes);
-                         return nbytes;
-                     }));
-    curl_easy_setopt(curl, CURLOPT_FILE, &output);
-    callCurl(curl, url);
-}

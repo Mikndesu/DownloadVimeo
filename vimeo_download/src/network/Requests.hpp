@@ -18,7 +18,6 @@
 namespace Requests
 {
     std::unique_ptr<JSON> get(const std::string &);
-    void get(std::string &, const std::string &);
 }
 
 class CurlStuff {
