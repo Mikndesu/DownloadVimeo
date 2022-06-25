@@ -12,11 +12,54 @@
 #include <iostream>
 #include <string>
 #include <memory>
+#include <curl/curl.h>
 #include "../json/Json.hpp"
 
-namespace Requests {
-    std::unique_ptr<JSON> get(const std::string&);
-    void get(std::string&, const std::string&);
+namespace Requests
+{
+    std::unique_ptr<JSON> get(const std::string &);
+    void get(std::string &, const std::string &);
 }
+
+class CurlStuff {
+protected:
+    CURL *curl;
+    std::string url;
+    long status_code;
+
+    template <typename F>
+    void setCurlWriteFunction(F &&func)
+    {
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, +func);
+    }
+
+    void perform() {
+        std::string response;
+        long status_code = 0;
+        curl_easy_setopt(this->curl, CURLOPT_URL, this->url.c_str());
+        curl_easy_perform(this->curl);
+        curl_easy_getinfo(this->curl, CURLINFO_RESPONSE_CODE, &this->status_code);
+        if (status_code != 200) {
+            std::cout << "\n" << "ERROR: HTTP Status Code is " << status_code << std::endl;
+            curl = nullptr;
+            throw "Exception: Request Invalid URL \n" + url;
+        }
+        curl_easy_cleanup(this->curl);
+        this->curl=nullptr;
+        return;
+    }
+
+    CurlStuff(const std::string &url) : url(url)
+    {
+        this->status_code = 0;
+        curl = curl_easy_init();
+        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, +([](char *ptr, std::size_t size, std::size_t nmemb, std::string *stream) {
+                         int dataLength = static_cast<int>(size * nmemb);
+                         stream->append(ptr, dataLength);
+                         return dataLength;
+                     }));
+    }
+};
 
 #endif /* Requests_hpp */

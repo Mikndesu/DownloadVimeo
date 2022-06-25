@@ -7,7 +7,7 @@
 //
 
 #include "Vimeo.hpp"
-#include "network/Requests.hpp"
+#include "network/SegmentVideo.hpp"
 #include "../lib/cppcodec/base64_rfc4648.hpp"
 #include "util/Utils.hpp"
 #include "util/Colors.hpp"
@@ -215,7 +215,8 @@ void Vimeo::downloadSegmentAndMerge(picojson::object &obj, std::string base_url,
                       << index << " / " << array_size << std::flush;
         }
         std::string segment_url = base_url + segment.get<picojson::object>()["url"].to_str();
-        Requests::get(segment_url, tmpFileDir);
+        auto segmentVideo = std::make_unique<SegmentVideo>(segment_url);
+        segmentVideo->download(tmpFileDir);
         if(Utils::isVideo(mode) && index == array_size -1) {
             std::cout << "\r" << std::string(20, ' ') << "\r"
                       << "Progress: "
