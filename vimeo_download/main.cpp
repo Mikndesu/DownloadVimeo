@@ -66,7 +66,7 @@ int main(int argc, const char *argv[])
     auto arg = parseArgument(argc, argv);
     if (arg->isVerbose)
         std::cout << "Verbose Mode on" << std::endl;
-    auto reqMetadata = std::make_unique<RequestMetadata>(arg->url);
+    auto reqMetadata = std::make_shared<RequestMetadata>(arg->url);
     auto vimeo = std::make_unique<Vimeo>(arg->outputName, arg->url, reqMetadata->get(), arg->isVerbose, arg->progress_limit);
     vimeo->download().merge();
 #ifdef __APPLE__
