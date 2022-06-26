@@ -2,10 +2,10 @@
 #include "../network/RequestSegment.hpp"
 
 VideoSegment::VideoSegment(std::shared_ptr<Json> jsonPtr, std::string tmpfile_dir, std::string base_url) : super(jsonPtr, tmpfile_dir, base_url) {
-    this->decodeInitSegmentAndWrite();
     this->obj = findHighestQualityVideo();
     this->base_url = this->base_url + obj.at("base_url").to_str();
     this->tmpfile_dir += "v.mp4";
+    this->decodeInitSegmentAndWrite();
 }
 
 picojson::object VideoSegment::findHighestQualityVideo() {
