@@ -29,22 +29,13 @@ Vimeo::Vimeo(const std::string &output_name, const std::string &url, std::shared
 #ifdef _WIN64
     this->home_dir = Utils::get_enviroment("USERPROFILE");
 #endif
-    if (this->isVerbose)
-    {
-        std::cout << base_url << std::endl;
-    }
     auto paths = utils->createDirectory(this->home_dir);
     this->tmp_dir = paths.first;
     this->save_dir = paths.second;
     if (this->output_name.find(".mp4") == std::string::npos)
     {
-        if (this->isVerbose)
-        {
-            std::cout << "cannot find .mp4 with name" << std::endl;
-        }
         this->output_name += ".mp4";
     }
-    std::cout << "Output file name will be: " << this->output_name << std::endl;
 }
 
 template <typename T, typename U>
@@ -81,12 +72,6 @@ void Vimeo::merge()
 #ifdef _WIN64
     std::cout << "The Video was saved to: " << this->home_dir << "\\Desktop\\Vimeo\\" << this->output_name << std::endl;
 #endif
-    std::filesystem::remove_all(this->tmp_dir);
-    std::cout << "Cleaning Process Started" << std::endl;
-    std::cout << Colors::RED
-              << "Temp Folder has removed: " << this->tmp_dir << std::endl;
-    std::cout << "Cleaning Process End"
-              << Colors::RESET << std::endl;
 #endif
 }
 
@@ -105,8 +90,7 @@ Vimeo &Vimeo::download()
     video_process.join();
     audio_process.join();
 #else
-    // this->downloadVideo();
-    // this->downloadAudio();
+    std::exit(1);
 #endif
     std::cout << "\n"
               << Colors::CYAN
