@@ -13,11 +13,8 @@
 #include "segment/VideoSegment.hpp"
 #include <regex>
 #include <tuple>
-#include <filesystem>
 #include <future>
 #include <cstdlib>
-#include <fstream>
-#include <iterator>
 
 Vimeo::Vimeo(const std::string &output_name, const std::string &url, std::shared_ptr<Json> json, bool isVerbose, int progress_limit) : json(json), url(url), output_name(output_name), isVerbose(isVerbose), progress_limit(progress_limit)
 {
