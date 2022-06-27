@@ -1,5 +1,5 @@
 //
-//  JSON.hpp
+//  Json.hpp
 //  vimeo_download
 //
 //  Created by MitsukiGoto on 2020/05/16.
@@ -10,11 +10,11 @@
 #define JSON_hpp
 
 #include <iostream>
-#include "picojson.h"
+#include "../../lib/picojson.h"
 
-class JSON {
+class Json {
 public:
-    JSON(std::string);
+    Json(std::string);
     picojson::value v;
 };
 

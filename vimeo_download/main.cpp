@@ -12,9 +12,9 @@
 #include <cstdlib>
 #include <boost/program_options.hpp>
 #include <tuple>
-#include "include/Vimeo.hpp"
-#include "include/model/parsedArg.hpp"
-#include "include/Requests.hpp"
+#include "src/Vimeo.hpp"
+#include "src/model/ParsedArg.hpp"
+#include "src/network/RequestMetadata.hpp"
 
 namespace
 {
@@ -66,7 +66,8 @@ int main(int argc, const char *argv[])
     auto arg = parseArgument(argc, argv);
     if (arg->isVerbose)
         std::cout << "Verbose Mode on" << std::endl;
-    auto vimeo = std::make_unique<Vimeo>(arg->outputName, arg->url, Requests::get(arg->url), arg->isVerbose, arg->progress_limit);
+    auto reqMetadata = std::make_shared<RequestMetadata>(arg->url);
+    auto vimeo = std::make_unique<Vimeo>(arg->outputName, arg->url, reqMetadata->get(), arg->isVerbose, arg->progress_limit);
     vimeo->download().merge();
 #ifdef __APPLE__
     std::system("osascript -e 'display notification \"Finish\"'");

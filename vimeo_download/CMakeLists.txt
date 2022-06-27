@@ -14,7 +14,7 @@ endif()
 
 add_subdirectory(src)
 
-target_link_libraries(download_vimeo vimeocore)
+target_link_libraries(download_vimeo vimeocore_vimeo)
 set(Boost_USE_STATIC_LIBS ON)
 set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
