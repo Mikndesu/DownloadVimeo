@@ -11,6 +11,7 @@
 #include "../lib/cppcodec/base64_rfc4648.hpp"
 #include "segment/AudioSegment.hpp"
 #include "segment/VideoSegment.hpp"
+#include "util/Colors.hpp"
 #include <regex>
 #include <tuple>
 #include <future>
@@ -29,10 +30,7 @@ Vimeo::Vimeo(const std::string &output_name, const std::string &url, std::shared
     auto paths = utils->createDirectory(this->home_dir);
     this->tmp_dir = paths.first;
     this->save_dir = paths.second;
-    if (this->output_name.find(".mp4") == std::string::npos)
-    {
-        this->output_name += ".mp4";
-    }
+    this->output_name = this->output_name.find(".mp4") == std::string::npos ? this->output_name : this->output_name += ".mp4";
 }
 
 template <typename T, typename U>
@@ -74,8 +72,6 @@ void Vimeo::merge()
 
 Vimeo &Vimeo::download()
 {
-#if defined(__MACH__) || defined(__linux) || defined(_WIN64)
-    // #ifdef DEBUGING
     auto video_process = std::thread([this] {
         auto videoSegment = std::make_unique<VideoSegment>(this->json, this->tmp_dir, this->base_url);
         videoSegment->download();
@@ -86,9 +82,6 @@ Vimeo &Vimeo::download()
     });
     video_process.join();
     audio_process.join();
-#else
-    std::exit(1);
-#endif
     std::cout << "\n"
               << Colors::CYAN
               << "Downloading Video&Audio has successflly done"
