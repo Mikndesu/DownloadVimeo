@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 project(download_vimeo)
-add_executable(download_vimeo main.cpp)
+add_executable(download_vimeo main.cpp ArgumentParser.cpp)
 
 set(CMAKE_CXX_COMPILER clang++)
 if(WIN32)
