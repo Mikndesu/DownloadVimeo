@@ -37,6 +37,7 @@ private:
     std::string save_dir;
     std::string home_dir;
     std::string output_name;
+    std::string output_path;
     bool isVerbose;
     int progress_limit;
     template <typename T, typename U>
