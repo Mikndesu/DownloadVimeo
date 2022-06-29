@@ -1,4 +1,3 @@
-#pragma once
 #include "Json.hpp"
 
 Json::Json(std::string json) {
