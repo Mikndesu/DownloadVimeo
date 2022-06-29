@@ -36,11 +36,7 @@ std::string Utils::getBaseUrl(std::string base_url, std::string relative) {
 std::string Utils::vecToString(const std::vector<std::string> &vec) {
     std::string str;
     for (const auto &elm : vec) {
-        if (str != "") {
-            str = str + "/" + elm;
-        } else {
-            str = elm;
-        }
+        str = str!="" ? str + "/" + elm : elm;
     }
     return str += "/";
 }
