@@ -30,7 +30,7 @@ jobs:
         run: cmake -E make_directory ${{github.workspace}}/build -DACTIONS=TRUE
 
       - name: Install libcurl
-        run: sudo apt install libboost-dev; sudo apt install libboost-all-dev; sudo apt install libcurl4-openssl-dev
+        run: sudo apt update; sudo apt install libboost-dev; sudo apt install libboost-all-dev; sudo apt install libcurl4-openssl-dev
 
       - name: Cache Boost Libs
         id: boost_cache
