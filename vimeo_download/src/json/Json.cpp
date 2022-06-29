@@ -1,11 +1,4 @@
-//
-//  Json.cpp
-//  vimeo_download
-//
-//  Created by MitsukiGoto on 2020/05/16.
-//  Copyright © 2020 MitsukiGoto. All rights reserved.
-//
-
+#pragma once
 #include "Json.hpp"
 
 Json::Json(std::string json) {

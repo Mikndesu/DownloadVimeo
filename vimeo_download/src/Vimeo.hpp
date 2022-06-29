@@ -1,14 +1,4 @@
-//
-//  VimeoParse.hpp
-//  vimeo_download
-//
-//  Created by MitsukiGoto on 2020/05/16.
-//  Copyright © 2020 MitsukiGoto. All rights reserved.
-//
-
-#ifndef Vimeo_hpp
-#define Vimeo_hpp
-
+#pragma once
 #include <iostream>
 #include <memory>
 #include <string>
@@ -43,5 +33,3 @@ private:
     template <typename T, typename U>
     auto command(T tmp, U name);
 };
-
-#endif /* VimeoParse_hpp */

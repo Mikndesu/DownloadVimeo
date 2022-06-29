@@ -1,14 +1,4 @@
-//
-//  Requests.hpp
-//  vimeo_download
-//
-//  Created by MitsukiGoto on 2020/05/16.
-//  Copyright © 2020 MitsukiGoto. All rights reserved.
-//
-
-#ifndef Requests_hpp
-#define Requests_hpp
-
+#pragma once
 #include <iostream>
 #include <string>
 #include <memory>
@@ -49,5 +39,3 @@ protected:
         curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
     }
 };
-
-#endif /* Requests_hpp */

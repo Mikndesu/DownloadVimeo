@@ -1,14 +1,4 @@
-//
-//  ParsedArg.hpp
-//  vimeo_download
-//
-//  Created by Mitsuki Goto on 2021/01/26.
-//  Copyright © 2021 MitsukiGoto. All rights reserved.
-//
-
-#ifndef ParsedArg_hpp
-#define ParsedArg_hpp
-
+#pragma once
 #include <iostream>
 
 class ParsedArg {
@@ -19,5 +9,3 @@ public:
     bool isVerbose;
     int progress_limit;
 };
-
-#endif /* ParsedArg_hpp */
