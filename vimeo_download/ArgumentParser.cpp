@@ -9,7 +9,7 @@ ArgumentParser::ArgumentParser(int argc, const char **argv) {
 std::unique_ptr<ParsedArg> ArgumentParser::parse() {
     description->add_options()("url,u", boost::program_options::value<std::string>(), "Set Target URL")("output,o", boost::program_options::value<std::string>(), "Set output name")("limit-progress,l", boost::program_options::value<std::string>(),"Limit progress dots any you want")("continue,c", "Other Download")("help,h", "Help")("verbose", "Turn on Verbose Mode")("version", "Show Version");
     if (vm.count("help")){
-        std::cout << description << std::endl;
+        std::cout << this->description.get() << std::endl;
         std::exit(0);
     }
     if (vm.count("version")) {
