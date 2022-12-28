@@ -5,7 +5,7 @@
 #include <sstream>
 #include "../json/Json.hpp"
 #include "../network/RequestSegment.hpp"
-#include "../../lib/cppcodec/base64_rfc4648.hpp"
+#include "cppcodec/base64_rfc4648.hpp"
 
 class SegmentBase {
 private:

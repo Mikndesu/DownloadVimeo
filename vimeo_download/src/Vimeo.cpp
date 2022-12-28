@@ -8,7 +8,7 @@
 
 #include "Vimeo.hpp"
 #include "network/RequestSegment.hpp"
-#include "../lib/cppcodec/base64_rfc4648.hpp"
+#include "cppcodec/base64_rfc4648.hpp"
 #include "segment/AudioSegment.hpp"
 #include "segment/VideoSegment.hpp"
 #include "util/Colors.hpp"

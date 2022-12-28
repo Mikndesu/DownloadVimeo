@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "../../lib/cppcodec/base64_rfc4648.hpp"
+#include "cppcodec/base64_rfc4648.hpp"
 
 
 class Utils {
