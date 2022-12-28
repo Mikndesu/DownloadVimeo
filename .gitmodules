@@ -1,0 +1,3 @@
+[submodule "vimeo_download/lib/cppcodec"]
+	path = vimeo_download/lib/cppcodec
+	url = https://github.com/tplgy/cppcodec.git
